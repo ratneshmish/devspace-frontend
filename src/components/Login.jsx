@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import Feed from './Feed';
+import toast from 'react-hot-toast';
 import { addUser } from '../utils/userslice';
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const [email, setemailid] = useState("");
   const [password, setpassword] = useState("");
+  const navigate=useNavigate();
   const dispatch=useDispatch();
 const user=useSelector((store)=>store.user)
   const handlesubmit = async (e) => {
@@ -16,10 +20,16 @@ const user=useSelector((store)=>store.user)
         { email, password },
         { withCredentials: true }
       );
-      console.log(res.data);
+      // console.log(res.data);
    dispatch(addUser(res.data))
+    return navigate("/feed");
     } catch (err) {
-      console.error(err);
+      if(err?.response?.data){
+        toast.error(err?.response?.data);
+      }
+      else{
+      toast.error("Retry! Something is wrong");
+      }
     }
   };
 

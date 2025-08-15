@@ -1,8 +1,25 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-
+import { useDispatch, useSelector } from 'react-redux'
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
+import { removeUser } from '../utils/userslice';
+import toast from 'react-hot-toast';
 const Navbar = () => {
   const user=useSelector((store)=>store.user);
+  const dispatch=useDispatch();
+  const navigate=useNavigate();
+  const handlelogout=async()=>{
+    try{
+    await axios.post("http://localhost:5000/logout",{},{withCredentials:true})
+      dispatch(removeUser());
+      toast.success("Logout successful");
+      navigate("/login");
+
+    }
+    catch(err){
+    toast.error(err.message);
+    }
+  }
   return (
     <div className="navbar bg-base-100 shadow-lg px-6">
       {/* Brand */}
@@ -34,12 +51,12 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow-lg"
           >
             <li>
-              <a className="justify-between">
+              <Link to="/profile" className="justify-between">
                 Profile
                 <span className="badge bg-[#d4af37] border-none text-black">New</span>
-              </a>
+              </Link>
             </li>
-            <li><a>Logout</a></li>
+            <li><Link onClick={handlelogout}>Logout</Link></li>
           </ul>
         </div>}
       </div>
