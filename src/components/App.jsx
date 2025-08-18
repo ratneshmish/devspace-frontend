@@ -8,6 +8,9 @@ import Login from "./Login";
 import Profile from "./Profile";
 import Feed from "./Feed";
 import { Toaster } from "react-hot-toast";
+import Connections from "./Connections";
+import Requests from "./Requests";
+import Signup from "./Signup";
 
 
 function App() {
@@ -40,10 +43,34 @@ function App() {
               }
             />
             <Route
+              path="connections"
+              element={
+             
+                  <Connections />
+              
+              }
+            />
+                        <Route
               path="feed"
               element={
-         
+             
                   <Feed />
+              
+              }
+            />
+            <Route
+              path="requests"
+              element={
+             
+                  <Requests />
+              
+              }
+            />
+             <Route
+              path="signup"
+              element={
+         
+                  <Signup />
           
               }
             />

@@ -4,6 +4,10 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { removeUser } from '../utils/userslice';
 import toast from 'react-hot-toast';
+import Connections from './Connections';
+import Requests from './Requests';
+
+
 const Navbar = () => {
   const user=useSelector((store)=>store.user);
   const dispatch=useDispatch();
@@ -24,15 +28,28 @@ const Navbar = () => {
     <div className="navbar bg-base-100 shadow-lg px-6">
       {/* Brand */}
       <div className="flex-1">
-        <a
-          className="text-3xl font-bold tracking-wide 
-          bg-gradient-to-r from-[#d4af37] via-[#f7d774] to-[#d4af37]
-          bg-clip-text text-transparent 
-          hover:from-[#e6c36f] hover:via-[#ffdf88] hover:to-[#e6c36f]
-          transition-all duration-300 cursor-pointer"
-        >
-          DevSpace
-        </a>
+    <a
+  className="relative text-3xl font-bold tracking-wide 
+  bg-gradient-to-r from-white to-white
+  bg-clip-text text-transparent 
+  transition-all duration-300 cursor-pointer
+  group"
+>
+  {/* First half white, second half gradient */}
+  <span className="bg-gradient-to-r from-white to-white bg-clip-text text-transparent">
+    Dev
+  </span>
+  <span className="bg-gradient-to-r from-[#d4af37] via-[#f7d774] to-[#d4af37] bg-clip-text text-transparent">
+    Space
+  </span>
+
+  {/* underline effect */}
+  <span
+    className="absolute left-0 bottom-0 w-1/2 h-[2px] bg-white 
+    scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"
+  ></span>
+</a>
+
       </div>
 
       {/* Menu */}
@@ -56,6 +73,8 @@ const Navbar = () => {
                 <span className="badge bg-[#d4af37] border-none text-black">New</span>
               </Link>
             </li>
+             <li><Link to="/connections">Connections</Link></li>
+              <li><Link to="/requests">Requests</Link></li>
             <li><Link onClick={handlelogout}>Logout</Link></li>
           </ul>
         </div>}

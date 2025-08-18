@@ -22,8 +22,8 @@ const navigate=useNavigate();
      }
   catch (err) {
   if (err.status === 401) {
-    toast.error("Please login");  // show error toast
-    navigate("/login");           // redirect to login page
+    // toast.error("Please login");  // show error toast
+    navigate("/home");           // redirect to login page
   } else {
     toast.error(err.message || "Something went wrong"); // generic errors
   }
@@ -33,7 +33,7 @@ const navigate=useNavigate();
 fetchuser();
   },[])
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen ">
       <Navbar />
 
      
