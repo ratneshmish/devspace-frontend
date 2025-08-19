@@ -10,7 +10,7 @@ const Usercard = ({ user }) => {
 const handlebutton = async (status, _id) => {
   try {
     const res = await axios.post(
-      `http://localhost:5000/sendconnection/${status}/${_id}`,
+      `${import.meta.env.VITE_URL}/sendconnection/${status}/${_id}`,
       {},
       { withCredentials: true }
     );

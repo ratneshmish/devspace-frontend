@@ -8,6 +8,7 @@ import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { addUser } from '../utils/userslice'
 const Body = () => {
+  // console.log(import.meta.env.VITE_URL);
   const dispatch=useDispatch();
 const userdata=useSelector((store)=>store.user);
 const navigate=useNavigate();
@@ -15,7 +16,7 @@ const navigate=useNavigate();
    if (userdata) return; 
     try{
      
-   const res=await axios.get("http://localhost:5000/profile/view",{
+   const res=await axios.get(import.meta.env.VITE_URL+"/profile/view",{
     withCredentials:true,
    });
    dispatch(addUser(res.data));

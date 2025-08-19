@@ -12,7 +12,7 @@ const Requests = () => {
   const handlerequestbutton = async (status, _id) => {
   try {
     const res = await axios.post(
-      `http://localhost:5000/send/request/review/${status}/${_id}`,
+      import.meta.env.VITE_URL+`/send/request/review/${status}/${_id}`,
       {},
       { withCredentials: true }
     );
@@ -27,7 +27,7 @@ const Requests = () => {
 
   const fetchrequest = async () => {
     const res = await axios.get(
-      "http://localhost:5000/user/request/received",
+      import.meta.env.VITE_URL+"/user/request/received",
       { withCredentials: true }
     );
     dispatch(addrequest(res?.data?.data));

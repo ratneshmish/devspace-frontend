@@ -16,7 +16,7 @@ const Editprofile = ({ user }) => {
     e.preventDefault();
     try {
       const res = await axios.patch(
-        "http://localhost:5000/profile/edit",
+        import.meta.env.VITE_URL+"/profile/edit",
         { firstName, lastName, age, about, photoUrl },
         { withCredentials: true }
       );

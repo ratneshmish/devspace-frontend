@@ -14,7 +14,7 @@ const Navbar = () => {
   const navigate=useNavigate();
   const handlelogout=async()=>{
     try{
-    await axios.post("http://localhost:5000/logout",{},{withCredentials:true})
+    await axios.post(import.meta.env.VITE_URL+"/logout",{},{withCredentials:true})
       dispatch(removeUser());
       toast.success("Logout successful");
       navigate("/login");

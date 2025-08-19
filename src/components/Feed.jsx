@@ -9,7 +9,7 @@ const Feed = () => {
   const fetchfeeddata=async()=>{
     if(feeddata.length>0)return;
     try{
- const res=await axios.get("http://localhost:5000/feed",{withCredentials:true})
+ const res=await axios.get(import.meta.env.VITE_URL+"/feed",{withCredentials:true})
  console.log(res?.data);
     dispatch(addfeeddata(res?.data));
   }

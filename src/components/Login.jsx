@@ -16,7 +16,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:5000/login",
+        import.meta.env.VITE_URL+"/login",
         { email, password },
         { withCredentials: true }
       );

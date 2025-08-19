@@ -11,6 +11,7 @@ import { Toaster } from "react-hot-toast";
 import Connections from "./Connections";
 import Requests from "./Requests";
 import Signup from "./Signup";
+import Chat from "./Chat";
 
 
 function App() {
@@ -71,6 +72,14 @@ function App() {
               element={
          
                   <Signup />
+          
+              }
+            />
+             <Route
+              path="chat/:targetId/:firstName"
+              element={
+         
+                  <Chat />
           
               }
             />
