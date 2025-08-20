@@ -10,6 +10,9 @@ const Signup = () => {
   const [lastName, setlastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [gender,setGender]=useState("");
+  const [age,setAge]=useState("");
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -18,7 +21,7 @@ const Signup = () => {
     try {
       const res = await axios.post(
         import.meta.env.VITE_URL+"/signup",
-        { firstName, lastName, email, password },
+        { firstName, lastName, email, password ,age,gender},
         { withCredentials: true }
       );
       dispatch(addUser(res?.data?.data));
@@ -87,6 +90,35 @@ const Signup = () => {
             required
           />
         </div>
+        <div className="form-control">
+  <label className="label after:content-['*'] after:ml-1 after:text-red-500">
+    <span className="label-text font-semibold">Gender</span>
+  </label>
+  <select
+    value={gender}
+    onChange={(e) => setGender(e.target.value)}
+    className="select select-bordered w-full"
+    required
+  >
+    <option value="">Select Gender</option>
+    <option value="male">male</option>
+    <option value="female">female</option>
+  </select>
+</div>
+
+         <div className="form-control">
+            <label className="label after:content-['*'] after:ml-1 after:text-red-500">
+              <span className="label-text font-semibold">Age</span>
+            </label>
+            <input
+              type="number"
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
+              placeholder="Age"
+              className="input input-bordered w-full"
+              required
+            />
+          </div>
         <div className="flex justify-center pt-4">
           <button type="submit" className="btn btn-primary w-full max-w-xs">
             Signup

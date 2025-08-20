@@ -13,7 +13,7 @@ const Body = () => {
 const userdata=useSelector((store)=>store.user);
 const navigate=useNavigate();
   const fetchuser=async()=>{
-   if (userdata) return; 
+
     try{
      
    const res=await axios.get(import.meta.env.VITE_URL+"/profile/view",{

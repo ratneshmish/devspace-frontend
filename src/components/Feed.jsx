@@ -10,11 +10,11 @@ const Feed = () => {
     if(feeddata.length>0)return;
     try{
  const res=await axios.get(import.meta.env.VITE_URL+"/feed",{withCredentials:true})
- console.log(res?.data);
+//  console.log(res?.data);
     dispatch(addfeeddata(res?.data));
   }
  catch(err){
-   console.log(err);
+  //  console.log(err);
  }
   }
   useEffect(()=>{

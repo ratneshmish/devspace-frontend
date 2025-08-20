@@ -5,7 +5,7 @@ import { removefeeddata } from '../utils/feedslice';
 import { useDispatch } from 'react-redux';
 const Usercard = ({ user }) => {
   if (!user) return null;
-  const {_id, firstName, lastName, photoUrl, about } = user;
+  const {_id, firstName, lastName, photoUrl, about,skills,age,gender } = user;
   const dispatch=useDispatch();
 const handlebutton = async (status, _id) => {
   try {
@@ -27,7 +27,7 @@ const handlebutton = async (status, _id) => {
 };
 
   return (
-    <div className="flex justify-center items-center min-h-screen  bg-black">
+    <div className="flex justify-center items-center min-h-screen ">
       <div className="card w-full max-w-md overflow-hidden  shadow-2xl border border-gray-800 bg-gradient-to-b from-gray-900 to-black">
         
     
@@ -52,10 +52,24 @@ const handlebutton = async (status, _id) => {
           </h2>
           <p className="text-amber-400">{about || "No description provided."}</p>
           <p className="text-amber-400">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Asperiores voluptas laudantium, mollitia incidunt ratione ipsam ullam fugit, 
-            doloribus officiis architecto odio quos pariatur culpa nostrum eum beatae excepturi, est iste.
+            Age:{age}
           </p>
+           <p className="text-amber-400">
+            Gender:{gender}
+          </p>
+         
+          {skills && (
+  Array.isArray(skills) ? (
+    skills.length > 0 && (
+      <p className="text-amber-400">Skills: {skills.join(", ")}</p>
+    )
+  ) : (
+    skills.trim() !== "" && (
+      <p className="text-amber-400">Skills: {skills}</p>
+    )
+  )
+)}
+     
 
           {/* Classy Buttons */}
           <div className="card-actions justify-end gap-3 mt-4">

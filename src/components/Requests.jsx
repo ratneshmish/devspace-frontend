@@ -20,7 +20,7 @@ const Requests = () => {
     dispatch(removerequest(_id));
     toast.success(`Request ${status}`);
   } catch (err) {
-    console.error("Request error:", err);
+    // console.error("Request error:", err);
     toast.error(err.response?.data?.message || err.message || "Something went wrong");
   }
 };

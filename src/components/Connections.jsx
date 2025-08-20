@@ -20,7 +20,7 @@ const Connections = () => {
   }, []);
 
   const handlebutton = (action, id) => {
-    console.log("Button clicked:", action, id);
+    // console.log("Button clicked:", action, id);
   };
 
   if (!connectiondata) return null;
